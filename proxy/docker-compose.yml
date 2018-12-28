@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+    proxy:
+      image: nginx:latest
+#      restart: always
+      ports:
+        - "80:80"
+        - '443:443'
+      volumes:
+        - ./conf/nginx/conf.d:/etc/nginx/conf.d
+        - ./conf/nginx/common:/etc/nginx/common
+        - ./nginx:/var/log/nginx/
+

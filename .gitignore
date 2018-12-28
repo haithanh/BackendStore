@@ -1,0 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+/dbdata/*
+/logs/*
+conf/nginx/cache/
+.idea
+.env
+/source/storage/logs/laravel.log
+/proxy/nginx/*

@@ -1,0 +1,28 @@
+let crypto = require('crypto');
+
+let decrypt = function (password, iv, text) {
+    password = crypto.createHash('md5').update(password).digest('hex');
+    iv = crypto.createHash('md5').update(iv).digest('hex').substr(0, 16);
+
+    let decipher = crypto.createDecipheriv('aes-256-cbc', password, iv);
+    let dec = decipher.update(text, 'hex', 'utf8')
+    dec += decipher.final('utf8');
+    return dec;
+};
+
+let encrypt = function (password, iv, text) {
+    password = crypto.createHash('md5').update(password).digest('hex');
+    iv = crypto.createHash('md5').update(iv).digest('hex').substr(0, 16);
+
+    let cipher = crypto.createCipheriv('aes-256-cbc', password, iv);
+    let encryptedData = cipher.update(text, 'utf8', 'hex') + cipher.final('hex');
+    return encryptedData;
+};
+
+let data = '{"game_id":"3","transaction":"aejaljleajlkeaj","value":"10000","information":"1"}';
+let en = encrypt('l8UUnS5BkiQi','7qeemBIuaWVz', data);
+console.log('data after encrypt');
+console.log(en);
+let dec = decrypt('l8UUnS5BkiQi','7qeemBIuaWVz', en);
+console.log('data after decrypt');
+console.log(dec);
