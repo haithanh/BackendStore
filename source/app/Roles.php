@@ -18,6 +18,9 @@ namespace App;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Roles whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Roles whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Roles whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Roles newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Roles newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Roles query()
  */
 class Roles extends \Eloquent
 {

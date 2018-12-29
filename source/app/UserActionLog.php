@@ -24,6 +24,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\UserActionLog whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\UserActionLog whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserActionLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserActionLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserActionLog query()
  */
 class UserActionLog extends Model
 {

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminsActionLogsTable extends Migration
+class CreateUsersActionLogsTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -35,6 +35,6 @@ class CreateAdminsActionLogsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('admins_action_logs');
+		Schema::dropIfExists('action_logs');
 	}
 }

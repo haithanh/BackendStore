@@ -18,6 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereValue($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting query()
  */
 class Setting extends Model
 {

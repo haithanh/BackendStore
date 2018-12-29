@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Administrators;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\ApiController;
 use App\Libraries\Sunries\Encrypt;
@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use JWTAuthException;
 
-class AdminAuthController extends ApiController
+class AuthController extends ApiController
 {
 
     public function login(Request $request)
@@ -48,11 +48,10 @@ class AdminAuthController extends ApiController
             return response()->json(Util::createResponse(MSG_ERROR_USER_DISABLED), HTTP_ERROR_VALIDATION);
         }
 
-        $aGmToolData    = array(
+        $aGmToolData = array(
             "AccountID" => $user["username"],
             "Time"      => time()
         );
-        $user["gmtool"] = Encrypt::aes256Encrypt(json_encode($aGmToolData), GMTOOL_KEY, GMTOOL_IV);
 
         return response()->json(Util::createResponse(MSG_SUCCESS, compact("token", "user")));
     }
@@ -86,6 +85,28 @@ class AdminAuthController extends ApiController
         $request->user()->password = \Hash::make($aData["new_pass"]);
         $request->user()->save();
 
-        return response()->json(Util::createResponse(MSG_SUCCESS_UPDATE), HTTP_ERROR_VALIDATION);
+        return response()->json(Util::createResponse(MSG_SUCCESS_UPDATE));
+    }
+
+    public function account(Request $request)
+    {
+        $sAddress  = $request->get('address');
+        $sPhone    = $request->get('phone');
+        $sFullName = $request->get('full_name');
+        $aResponse = array();
+        $oUser     = $request->user();
+        if (empty($oUser))
+        {
+            return response()->json(Util::createResponse(MSG_ERROR_USER_NOT_FOUND, $aResponse), HTTP_ERROR_VALIDATION);
+        }
+        $aInformation              = $oUser->information;
+        $aInformation['address']   = $sAddress;
+        $aInformation['phone']     = $sPhone;
+        $aInformation['full_name'] = $sFullName;
+
+        $oUser->information = $aInformation;
+        $oUser->save();
+
+        return response()->json(Util::createResponse(MSG_SUCCESS_UPDATE));
     }
 }

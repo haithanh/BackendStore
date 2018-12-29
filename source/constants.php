@@ -1,37 +1,5 @@
 <?php
 
-//<editor-fold defaultstate="collapse" desc="Payment Gate">
-const GATE_APPLE                    = 4;
-const GATE_GOOGLE                   = 3;
-const GATE_STATUS_ACTIVE_RANDOM     = 1;
-const GATE_STATUS_ACTIVE_NOT_RANDOM = 2;
-const PAYMENT_GATE_TICHHOP          = 6;
-const PAYMENT_GATE_HCB              = 8;
-const PAYMENT_GATE_HIEUDT           = 5;
-const PAYMENT_GATE_G68              = 9;
-const PAYMENT_GATE_ANDY             = 11;
-const PAYMENT_GATE_ENDY             = 13;
-const PAYMENT_GATE_GOOGLE           = 3;
-const PAYMENT_GATE_APPLE            = 4;
-const PAYMENT_GATE_SUNDAY_CLUB      = 14;
-const PAYMENT_GATE_BANCA68          = 16;
-const PAYMENT_GATE_TRUMCA           = 18;
-const PAYMENT_GATE_TRUMCA2          = 19;
-const PAYMENT_GATE_SUNDAY_CLUB_2    = 21;
-const PAYMENT_GATE_IFISH2           = 22;
-const PAYMENT_GATE_SANCA            = 17;
-const PAYMENT_GATE_TESTGATE         = 23;
-
-define("PAYMENT_GATE_DEFAULT", array(
-    GAME_CAVANG777  => PAYMENT_GATE_TRUMCA2,
-    GAME_BANCA68    => PAYMENT_GATE_TRUMCA2,
-    GAME_IFISH      => PAYMENT_GATE_TRUMCA2,
-    GAME_123SANCA   => PAYMENT_GATE_ENDY,
-    GAME_123SANCA_2 => PAYMENT_GATE_ENDY,
-    GAME_TRUMSANCA  => PAYMENT_GATE_TRUMCA,
-    GAME_SUNDAYCLUB => PAYMENT_GATE_SUNDAY_CLUB_2
-));
-//</editor-fold>
 
 //<editor-fold desc="Encrypt">
 const DEFAULT_TTL              = 86400;

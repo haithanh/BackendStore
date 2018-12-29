@@ -39,6 +39,9 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @mixin \Eloquent
  * @property int|null            $gate_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereGateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User query()
  */
 class User extends \Illuminate\Foundation\Auth\User implements JWTSubject
 {
@@ -106,9 +109,9 @@ class User extends \Illuminate\Foundation\Auth\User implements JWTSubject
     {
         if (empty($this->aRoles))
         {
-            $oRoles = DB::table('admins_roles')
-                ->join('roles', 'admins_roles.role_id', '=', 'roles.id')
-                ->where("admins_roles.admin_id", "=", $this->id)
+            $oRoles = DB::table('users_roles')
+                ->join('roles', 'users_roles.role_id', '=', 'roles.id')
+                ->where("users_roles.user_id", "=", $this->id)
                 ->get();
             $aRoles = array();
             $aTemp  = array();
@@ -127,11 +130,9 @@ class User extends \Illuminate\Foundation\Auth\User implements JWTSubject
                     {
                         $aRoles[$iIndex] = array(
                             "id"    => $oRole->role_id,
-                            "name"  => $oRole->name,
-                            "games" => array()
+                            "name"  => $oRole->name
                         );
                     }
-                    $aRoles[$iIndex]["games"][] = $oRole->game_id;
                 }
             }
             $this->aRoles = $aRoles;

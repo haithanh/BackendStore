@@ -179,7 +179,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
-        YbrNX\MariaDB\MariaDBServiceProvider::class
+        YbrNX\MariaDB\MariaDBServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class
     ],
 
     /*
@@ -229,7 +230,9 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
         'Debugbar'     => Barryvdh\Debugbar\Facade::class,
-        'CusLog'       => App\Libraries\Sunries\Facades\CusLog::class
+        'CusLog'       => App\Libraries\Sunries\Facades\CusLog::class,
+        'JWTAuth'      => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory'   => Tymon\JWTAuth\Facades\JWTFactory::class
     ],
 
 ];
